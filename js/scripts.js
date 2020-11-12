@@ -15,7 +15,10 @@ var validatePassword = function (evt) {
 
   // Validate attempts
   if (ATTEMPT === 0) {
+    elPasswordInput.value = '';
+    elPasswordInput.classList.remove('is-invalid', 'is-valid');
     elPasswordInput.setAttribute('disabled', true);
+    elPasswordResult.textContent = '';
     elAttemptsResult.textContent = 'You lost all attempts';
     return;
   } else {
@@ -27,7 +30,7 @@ var validatePassword = function (evt) {
   var passwordInput = elPasswordInput.value.trim();
 
   // Validate user input
-  elPasswordInput.classList.remove('is-invalid');
+  elPasswordInput.classList.remove('is-invalid', 'is-valid');
 
   if (!passwordInput) {
     alert('Enter password :(');
@@ -47,7 +50,7 @@ var validatePassword = function (evt) {
   if (passwordInput === PASSWORD) {
     elPasswordInput.classList.add('is-valid');
     elAttemptsResult.classList.add('d-none');
-    elPasswordResult.textContent = 'Correct :)'
+    elPasswordResult.textContent = 'Correct :)';
     elPasswordResult.classList.add('text-success');
   } else {
     elPasswordInput.classList.add('is-invalid');
